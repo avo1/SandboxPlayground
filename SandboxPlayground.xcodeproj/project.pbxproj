@@ -7,8 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		04FC91E51D28EA6100BB5386 /* CoreDataTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FC91E41D28EA6100BB5386 /* CoreDataTableViewController.swift */; };
+		04FC91E71D28EC1000BB5386 /* NotebooksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FC91E61D28EC1000BB5386 /* NotebooksViewController.swift */; };
 		18F903301D28B55500044F2E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F9032F1D28B55500044F2E /* AppDelegate.swift */; };
-		18F903321D28B55500044F2E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F903311D28B55500044F2E /* ViewController.swift */; };
 		18F903351D28B55500044F2E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18F903331D28B55500044F2E /* Main.storyboard */; };
 		18F903371D28B55500044F2E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18F903361D28B55500044F2E /* Assets.xcassets */; };
 		18F9033A1D28B55500044F2E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18F903381D28B55500044F2E /* LaunchScreen.storyboard */; };
@@ -21,9 +22,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		04FC91E41D28EA6100BB5386 /* CoreDataTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataTableViewController.swift; sourceTree = "<group>"; };
+		04FC91E61D28EC1000BB5386 /* NotebooksViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotebooksViewController.swift; sourceTree = "<group>"; };
 		18F9032C1D28B55500044F2E /* SandboxPlayground.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SandboxPlayground.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18F9032F1D28B55500044F2E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		18F903311D28B55500044F2E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		18F903341D28B55500044F2E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		18F903361D28B55500044F2E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		18F903391D28B55500044F2E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -47,6 +49,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		04FC91E31D28E9FD00BB5386 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				04FC91E41D28EA6100BB5386 /* CoreDataTableViewController.swift */,
+				04FC91E61D28EC1000BB5386 /* NotebooksViewController.swift */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
 		18F903231D28B55500044F2E = {
 			isa = PBXGroup;
 			children = (
@@ -66,9 +77,9 @@
 		18F9032E1D28B55500044F2E /* SandboxPlayground */ = {
 			isa = PBXGroup;
 			children = (
+				04FC91E31D28E9FD00BB5386 /* Controllers */,
 				18F903441D28C79800044F2E /* Models */,
 				18F9032F1D28B55500044F2E /* AppDelegate.swift */,
-				18F903311D28B55500044F2E /* ViewController.swift */,
 				18F903331D28B55500044F2E /* Main.storyboard */,
 				18F903361D28B55500044F2E /* Assets.xcassets */,
 				18F903381D28B55500044F2E /* LaunchScreen.storyboard */,
@@ -162,14 +173,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				18F903321D28B55500044F2E /* ViewController.swift in Sources */,
 				18F903301D28B55500044F2E /* AppDelegate.swift in Sources */,
 				18F9034E1D28C85200044F2E /* Notebook.swift in Sources */,
 				18F903431D28BE7500044F2E /* NoteModel.xcdatamodeld in Sources */,
+				04FC91E71D28EC1000BB5386 /* NotebooksViewController.swift in Sources */,
 				18F903461D28C81700044F2E /* CoreDataStack.swift in Sources */,
 				18F9034D1D28C85200044F2E /* Notebook+CoreDataProperties.swift in Sources */,
 				18F9034B1D28C85200044F2E /* Note+CoreDataProperties.swift in Sources */,
 				18F9034C1D28C85200044F2E /* Note.swift in Sources */,
+				04FC91E51D28EA6100BB5386 /* CoreDataTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -319,6 +331,7 @@
 				18F903401D28B55500044F2E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

@@ -2,8 +2,8 @@
 //  CoreDataStack.swift
 //
 //
-//  Created by Fernando Rodríguez Romero on 21/02/16.
-//  Copyright © 2016 udacity.com. All rights reserved.
+//  Created by Dave Vo on 7/3/16.
+//  Copyright © 2016 DaveVo. All rights reserved.
 //
 
 import CoreData
@@ -18,23 +18,22 @@ struct CoreDataStack {
     let context : NSManagedObjectContext
     
     // MARK:  - Initializers
-    init?(modelName: String){
+    init?(modelName: String) {
         
         // Assumes the model is in the main bundle
         guard let modelURL = NSBundle.mainBundle().URLForResource(modelName, withExtension: "momd") else {
-            print("Unable to find \(modelName)in the main bundle")
-            return nil}
+            print("Unable to find \(modelName) in the main bundle")
+            return nil
+        }
         
         self.modelURL = modelURL
         
         // Try to create the model from the URL
-        guard let model = NSManagedObjectModel(contentsOfURL: modelURL) else{
+        guard let model = NSManagedObjectModel(contentsOfURL: modelURL) else {
             print("unable to create a model from \(modelURL)")
             return nil
         }
         self.model = model
-        
-        
         
         // Create the store coordinator
         coordinator = NSPersistentStoreCoordinator(managedObjectModel: model)
@@ -43,27 +42,25 @@ struct CoreDataStack {
         context = NSManagedObjectContext(concurrencyType: .MainQueueConcurrencyType)
         context.persistentStoreCoordinator = coordinator
         
-        
-        
         // Add a SQLite store located in the documents folder
         let fm = NSFileManager.defaultManager()
         
-        guard let  docUrl = fm.URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).first else{
+        guard let docUrl = fm.URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).first else {
             print("Unable to reach the documents folder")
             return nil
         }
         
         self.dbURL = docUrl.URLByAppendingPathComponent("model.sqlite")
         
-        
-        do{
+        do {
             try addStoreCoordinator(NSSQLiteStoreType, configuration: nil, storeURL: dbURL, options: nil)
             
-        }catch{
+        } catch {
             print("unable to add store at \(dbURL)")
         }
         
     }
+    
     
     // MARK:  - Utils
     func addStoreCoordinator(storeType: String,
@@ -86,8 +83,6 @@ extension CoreDataStack  {
         try coordinator.destroyPersistentStoreAtURL(dbURL, withType:NSSQLiteStoreType , options: nil)
         
         try addStoreCoordinator(NSSQLiteStoreType, configuration: nil, storeURL: dbURL, options: nil)
-        
-        
     }
 }
 
@@ -103,13 +98,12 @@ extension CoreDataStack {
     func autoSave(delayInSeconds : Int){
         
         if delayInSeconds > 0 {
-            do{
+            do {
                 try saveContext()
                 print("Autosaving")
-            }catch{
+            } catch {
                 print("Error while autosaving")
             }
-            
             
             let delayInNanoSeconds = UInt64(delayInSeconds) * NSEC_PER_SEC
             let time = dispatch_time(DISPATCH_TIME_NOW, Int64(delayInNanoSeconds))
@@ -117,22 +111,8 @@ extension CoreDataStack {
             dispatch_after(time, dispatch_get_main_queue(), {
                 self.autoSave(delayInSeconds)
             })
-            
         }
     }
+    
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
