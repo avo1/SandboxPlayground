@@ -14,11 +14,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="NotebookCell" textLabel="Vv4-hX-5Lc" detailTextLabel="D3s-Q7-Js6" imageView="MjZ-ST-IP9" rowHeight="45" style="IBUITableViewCellStyleSubtitle" id="XsL-7T-eon">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="NotebookCell" textLabel="Vv4-hX-5Lc" detailTextLabel="D3s-Q7-Js6" imageView="MjZ-ST-IP9" rowHeight="45" style="IBUITableViewCellStyleSubtitle" id="XsL-7T-eon">
                                 <rect key="frame" x="0.0" y="92" width="320" height="45"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="XsL-7T-eon" id="v2r-bx-vg7">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="44.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="287" height="44.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Vv4-hX-5Lc">
@@ -41,6 +41,9 @@
                                         </imageView>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="yuO-Mw-wlM" kind="push" identifier="displayNotes" id="oEm-iQ-uGf"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -53,6 +56,54 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6IK-ui-6wn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1462" y="429"/>
+        </scene>
+        <!--Notes View Controller-->
+        <scene sceneID="Ibz-pY-Ybh">
+            <objects>
+                <tableViewController id="yuO-Mw-wlM" customClass="NotesViewController" customModule="SandboxPlayground" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="VEZ-FP-tdo">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="NoteCell" textLabel="t5y-R6-CHz" imageView="xEU-KS-jgc" style="IBUITableViewCellStyleDefault" id="pwt-9L-xFV">
+                                <rect key="frame" x="0.0" y="92" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="pwt-9L-xFV" id="CHH-hn-y7Y">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="t5y-R6-CHz">
+                                            <rect key="frame" x="74" y="0.0" width="231" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="note" id="xEU-KS-jgc">
+                                            <rect key="frame" x="15" y="0.0" width="44" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </imageView>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="yuO-Mw-wlM" id="Fh3-Pf-OKr"/>
+                            <outlet property="delegate" destination="yuO-Mw-wlM" id="BZr-bw-IiM"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="p9r-WT-yrP">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="XMh-8p-vnu">
+                            <connections>
+                                <action selector="addNote:" destination="yuO-Mw-wlM" id="smc-XU-wdD"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XyC-oU-jDA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1855" y="429"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="IGu-DX-fR4">
@@ -75,5 +126,6 @@
     </scenes>
     <resources>
         <image name="book" width="256" height="256"/>
+        <image name="note" width="52" height="52"/>
     </resources>
 </document>

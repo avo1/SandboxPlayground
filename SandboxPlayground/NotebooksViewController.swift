@@ -15,7 +15,7 @@ class NotebooksViewController: CoreDataTableViewController {
         super.viewDidLoad()
 
         // Set the title
-        title = "CoolNotes123"
+        title = "CoolNotes"
         
         // Get the stack
         let delegate = UIApplication.sharedApplication().delegate as! AppDelegate
@@ -32,7 +32,7 @@ class NotebooksViewController: CoreDataTableViewController {
                 managedObjectContext: stack.context, sectionNameKeyPath: nil, cacheName: nil)
     }
 
-    // MARK: - Table view data source
+    // MARK: - TableView data source
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
@@ -54,14 +54,34 @@ class NotebooksViewController: CoreDataTableViewController {
         return cell
     }
     
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        if segue.identifier == "displayNotes" {
+            let nextVC = segue.destinationViewController as! NotesViewController
+            let ip = tableView.indexPathForSelectedRow
+            nextVC.notebookName = tableView.cellForRowAtIndexPath(ip!)?.textLabel?.text
+            
+            // Create a fetchrequest
+            let fr = NSFetchRequest(entityName: "Note")
+            fr.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: true)]
+            
+            // Create the predicate
+            let nb = fetchedResultsController!.objectAtIndexPath(ip!) as! Notebook
+            // Set the filter for the property 'notebook' of a Note
+            let p = NSPredicate(format: "notebook = %@", argumentArray: [nb])
+            fr.predicate = p
+            
+            // Create the FetchedResultsController
+            let fc = NSFetchedResultsController(fetchRequest: fr,
+                                           managedObjectContext: fetchedResultsController!.managedObjectContext,sectionNameKeyPath: nil, cacheName: nil)
+            
+            nextVC.fetchedResultsController = fc
+            
+        }
     }
-    */
 
 }
